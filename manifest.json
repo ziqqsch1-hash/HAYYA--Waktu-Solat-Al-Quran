@@ -3,12 +3,12 @@
   "name": "HAYYA - Waktu Solat & Kiblat",
   "icons": [
     {
-      "src": "https://img.icons8.com/fluent/192/000000/mosque.png",
+      "src": "image.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://img.icons8.com/fluent/512/000000/mosque.png",
+      "src": "image.png",
       "type": "image/png",
       "sizes": "512x512"
     }

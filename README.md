@@ -6,4 +6,4 @@ Kami sedang dalam usaha untuk membawa aplikasi web ini ke peringkat seterusnya, 
 
 Semoga usaha pembangunan projek aplikasi web waktu solat ini berjalan dengan lancar dan memberikan manfaat yang besar kepada masyarakat Islam dalam menguruskan ibadah harian dengan lebih sistematik. Sekiranya anda memerlukan bantuan lanjut mengenai struktur kod, pemilihan API waktu solat yang tepat, atau reka bentuk antaramuka yang lebih interaktif, jangan ragu untuk bertanya. Semoga projek ini mencapai matlamat yang disasarkan dengan jayanya.
 
-Sekiranya anda mempunyai sebarang cadangan, maklum balas, atau pertanyaan mengenai aplikasi ini, sila hubungi kami melalui e-mel di ziqqsch1@gmail.com. Kami amat menghargai setiap pandangan anda demi menambah baik kualiti perkhidmatan ini untuk manfaat bersama.
+Sekiranya anda mempunyai sebarang cadangan, maklum balas, atau pertanyaan mengenai aplikasi ini, sila hubungi kami melalui e-mel di hayyaapp1@gmail.com. Kami amat menghargai setiap pandangan anda demi menambah baik kualiti perkhidmatan ini untuk manfaat bersama.

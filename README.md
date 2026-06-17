@@ -2,6 +2,8 @@ Assalamualaikum. Projek ini bertujuan untuk menyediakan sebuah aplikasi web wakt
 
 Matlamat utama projek ini adalah untuk memudahkan umat Islam mengakses maklumat ibadah harian dengan paparan antaramuka yang moden, responsif, dan boleh diakses di pelbagai peranti. Dengan sokongan untuk pelbagai jenis tema visual dan pemilihan zon yang meluas, aplikasi ini direka untuk memberikan pengalaman yang selesa serta personal kepada setiap pengguna.
 
+Kami sedang dalam usaha untuk membawa aplikasi web ini ke peringkat seterusnya, iaitu menjadi aplikasi mudah alih (mobile app) yang sedia untuk diterbitkan. Sehubungan dengan itu, kami membuka peluang kepada sesiapa yang berminat dan mempunyai kepakaran untuk turut serta menyertai pasukan kami dalam menjayakan projek ini. Jika anda ingin menyumbang tenaga dan kepakaran, sila hubungi kami melalui e-mel di ziqqsch1@gmail.com.
+
 Semoga usaha pembangunan projek aplikasi web waktu solat ini berjalan dengan lancar dan memberikan manfaat yang besar kepada masyarakat Islam dalam menguruskan ibadah harian dengan lebih sistematik. Sekiranya anda memerlukan bantuan lanjut mengenai struktur kod, pemilihan API waktu solat yang tepat, atau reka bentuk antaramuka yang lebih interaktif, jangan ragu untuk bertanya. Semoga projek ini mencapai matlamat yang disasarkan dengan jayanya.
 
 Sekiranya anda mempunyai sebarang cadangan, maklum balas, atau pertanyaan mengenai aplikasi ini, sila hubungi kami melalui e-mel di ziqqsch1@gmail.com. Kami amat menghargai setiap pandangan anda demi menambah baik kualiti perkhidmatan ini untuk manfaat bersama.

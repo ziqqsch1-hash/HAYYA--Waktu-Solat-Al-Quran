@@ -1,12 +1,15 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAYYA - Waktu Solat, Al-Quran & Kiblat</title>
     
-        <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007aff">
+    <link rel="manifest" href="manifest.json">
+    <!-- Warna Latar PWA Mengikut Mod Terang/Gelap Sistem -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f6f9">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121214">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="HAYYA">
@@ -20,7 +23,7 @@
     <style>
         /* Tetapan Pembolehubah Warna Tema Semasa (Lalai/Default) */
         :root {
-            --theme-color: ##007aff;
+            --theme-color: #1d9371; /* Warna utama baharu */
             --bg-color: #f6f6f9;
             --card-color: #ffffff;
             --text-main: #1c1c1e;
@@ -50,20 +53,12 @@
         }
 
         /* =========================================
-           TEMA KHAS BERDASARKAN ATRIBUT DATA-THEME 
+           PILIHAN TEMA WARNA ASAS
            ========================================= */
-        body[data-theme="sage"] { --bg-color: #f4f5f0; --card-color: #ffffff; --theme-color: #8da399; --text-main: #3e4a42; --text-sub: #75837a; --input-bg: #e9ece4; --border-color: #dbe0d7; --nav-bg: rgba(255, 255, 255, 0.9); }
-        body[data-theme="japandi"] { --bg-color: #fdfbf7; --card-color: #f5f3eb; --theme-color: #a89f91; --text-main: #4a453f; --text-sub: #8c857d; --input-bg: #eceae1; --border-color: #e3dec9; --nav-bg: rgba(245, 243, 235, 0.9); }
-        body[data-theme="midnight"] { --bg-color: #0b132b; --card-color: #1c2541; --theme-color: #d4af37; --text-main: #f0f0f0; --text-sub: #9fb3c8; --input-bg: #2a3a5c; --border-color: rgba(212, 175, 55, 0.3); --nav-bg: rgba(28, 37, 65, 0.9); }
-        body[data-theme="klasik"] { --bg-color: #eae0c8; --card-color: #dcd3bd; --theme-color: #8b5a2b; --text-main: #3e2723; --text-sub: #6d4c41; --input-bg: #d1c4a9; --border-color: #c7b99c; --nav-bg: rgba(220, 211, 189, 0.9); }
-        body[data-theme="songket"] { --bg-color: #013220; --card-color: #004d30; --theme-color: #ffbf00; --text-main: #fcfcfc; --text-sub: #b3d4c6; --input-bg: #006640; --border-color: rgba(255, 191, 0, 0.4); --nav-bg: rgba(0, 77, 48, 0.9); }
-        body[data-theme="peranakan"] { --bg-color: #ffebf0; --card-color: #ffffff; --theme-color: #d11a6a; --text-main: #2b4f60; --text-sub: #6c8a99; --input-bg: #f5dce3; --border-color: #f0c9d5; --nav-bg: rgba(255, 255, 255, 0.9); }
-        body[data-theme="cyberpunk"] { --bg-color: #0d0221; --card-color: #12042e; --theme-color: #0ff; --text-main: #fff; --text-sub: #b356ff; --input-bg: #260a5e; --border-color: #0ff; --shadow-color: rgba(0, 255, 255, 0.2); --nav-bg: rgba(12, 4, 46, 0.9); }
-        body[data-theme="anime"] { --bg-color: #ffe6ea; --card-color: #fff0f3; --theme-color: #ff758f; --text-main: #5c374c; --text-sub: #9e748b; --input-bg: #ffd1da; --border-color: #ffc2ce; --nav-bg: rgba(255, 240, 243, 0.9); }
-        body[data-theme="y2k"] { --bg-color: #e0e0e0; --card-color: #ffffff; --theme-color: #ff007f; --text-main: #111; --text-sub: #666; --input-bg: #d4d4d4; --border-color: #ff007f; --nav-bg: rgba(255, 255, 255, 0.9); }
-        body[data-theme="boho"] { --bg-color: #f7ede2; --card-color: #f5dfbb; --theme-color: #d47e5b; --text-main: #5c4033; --text-sub: #9c7b6a; --input-bg: #ebcf9f; --border-color: #e6c891; --nav-bg: rgba(245, 223, 187, 0.9); }
-        body[data-theme="forest"] { --bg-color: #142117; --card-color: #1e3323; --theme-color: #e8d774; --text-main: #e0f2e3; --text-sub: #97ba9f; --input-bg: #294230; --border-color: rgba(232, 215, 116, 0.3); --nav-bg: rgba(30, 51, 35, 0.9); }
-        body[data-theme="ocean"] { --bg-color: #e0f4f5; --card-color: #cce9ec; --theme-color: #ff7f50; --text-main: #005a70; --text-sub: #44899c; --input-bg: #b0d9dd; --border-color: #93cdd3; --nav-bg: rgba(204, 233, 236, 0.9); }
+        body[data-theme="merah"] { --theme-color: #ff3b30; }
+        body[data-theme="oren"] { --theme-color: #ff9500; }
+        body[data-theme="biru"] { --theme-color: #007aff; }
+        body[data-theme="ungu"] { --theme-color: #af52de; }
 
         * {
             box-sizing: border-box;
@@ -193,19 +188,8 @@
         }
 
         /* UI Enhancements for Solat View */
-        .location-info-card {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .location-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--theme-color);
-        }
-
+        .location-info-card { display: flex; flex-direction: row; align-items: center; gap: 14px; }
+        .location-icon svg { width: 24px; height: 24px; fill: var(--theme-color); }
         .info-main { font-weight: 800; font-size: 1.25rem; color: var(--text-main); }
         .info-zone { font-size: 0.85rem; color: var(--text-sub); font-weight: 600; margin-top: 1px; }
         .info-sub { font-size: 0.85rem; color: var(--text-sub); margin-top: 6px; border-top: 1px dashed var(--dashed-color); padding-top: 8px; }
@@ -250,11 +234,10 @@
         .ayah-card { background: var(--card-color); border-radius: 16px; padding: 18px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, background-color 0.2s; }
         .ayah-card.playing { border-color: var(--theme-color); background-color: var(--input-bg); }
         
-        /* Font khusus Amiri ditumpukan khas untuk ayat Al-Quran sahaja */
         .ayah-arabic { font-family: 'Amiri', serif !important; font-size: 2.1rem; line-height: 2.5; color: var(--text-main); text-align: right; word-wrap: break-word; direction: rtl; }
         .ayah-text { font-size: 0.9rem; color: var(--text-main); line-height: 1.5; border-top: 1px dashed var(--dashed-color); padding-top: 10px; }
 
-        /* NEW: Audio Player Taskbar UI */
+        /* Audio Player Taskbar UI */
         .audio-player-taskbar {
             background: var(--card-color);
             border: 1px solid var(--border-color);
@@ -280,7 +263,6 @@
         .btn-player-nav:hover { background-color: var(--dashed-color); }
         .btn-player-main { background: var(--theme-color); border: none; padding: 10px; border-radius: 50%; cursor: pointer; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.1s; }
         .btn-player-main:active { transform: scale(0.95); }
-        body[data-theme="cyberpunk"] .btn-player-main, body[data-theme="y2k"] .btn-player-main, body[data-theme="forest"] .btn-player-main { color: #000; }
 
         /* Kiblat Compass UI Feature */
         .compass-area { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 10px; gap: 24px; }
@@ -291,9 +273,10 @@
         .rose-s { position: absolute; bottom: 8px; }
         .rose-e { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
         .rose-w { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); }
-        .compass-needle { position: absolute; width: 14px; height: 14px; background: #e74c3c; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; }
-        .compass-needle::before { content: ''; position: absolute; bottom: 50%; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 90px solid #e74c3c; }
-        .compass-needle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 90px solid var(--text-sub); }
+        
+        /* Ikon Anak Panah Kompas */
+        .compass-needle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .compass-needle svg { width: 46px; height: 46px; fill: #e74c3c; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); transform: translateY(-30px); }
         
         .kaaba-pointer { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transition: transform 0.1s ease-out; pointer-events: none; }
         .kaaba-icon { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; z-index: 11; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
@@ -306,7 +289,6 @@
         .btn-tabs-container { display: flex; gap: 8px; margin-bottom: 12px; }
         .btn-tab { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--input-bg); color: var(--text-main); font-weight: 700; cursor: pointer; font-size: 0.88rem; text-align: center; }
         .btn-tab.active { background: var(--theme-color); color: #ffffff; }
-        body[data-theme="cyberpunk"] .btn-tab.active, body[data-theme="y2k"] .btn-tab.active, body[data-theme="forest"] .btn-tab.active { color: #000; }
         .btn-gps { background-color: var(--input-bg); color: var(--theme-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
         .btn-gps:disabled { opacity: 0.5; }
 
@@ -374,7 +356,6 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.2); }
         }
         .btn-tutup, .btn-cari { background-color: var(--theme-color); color: #ffffff; border: none; padding: 14px 0; width: 100%; border-radius: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; }
-        body[data-theme="cyberpunk"] .btn-tutup, body[data-theme="cyberpunk"] .btn-cari, body[data-theme="y2k"] .btn-tutup, body[data-theme="y2k"] .btn-cari, body[data-theme="forest"] .btn-tutup, body[data-theme="forest"] .btn-cari { color: #000; }
         .loading { text-align: center; font-size: 0.88rem; color: var(--text-sub); display: none; margin-bottom: 10px; font-weight: 600; }
         .download-status { text-align: center; font-size: 0.78rem; color: var(--text-sub); padding: 6px; background: var(--input-bg); border-radius: 10px; margin-top: 10px; display: none; font-weight: 600; }
     </style>
@@ -523,7 +504,6 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center; justify-content: flex-end; flex: 1; min-width: 90px;">
-                    <!-- Menu Pilihan Ayat Dinamik -->
                     <select id="quran-ayah-select" onchange="lompatKeAyat()" style="padding: 6px 10px; font-size: 0.8rem; border-radius: 10px; width: auto; margin-bottom: 0; background: var(--input-bg); font-weight: 700; display: none;">
                         <option value="">Ayat</option>
                     </select>
@@ -537,7 +517,6 @@
             
             <div class="ayah-container" id="ayah-list-container"></div>
 
-            <!-- TASKBAR AUDIO BARU (STICKY DI BAWAH READER PANEL) -->
             <div id="quran-audio-player" class="audio-player-taskbar" style="display: none;">
                 <div class="player-info">
                     <span class="player-qari">🎙️ Mishary Alafasy</span>
@@ -569,7 +548,10 @@
                         <span class="rose-s">S</span>
                         <span class="rose-w">B</span>
                     </div>
-                    <div class="compass-needle"></div>
+                    <!-- Jarum kompas ditukar kepada anak panah -->
+                    <div class="compass-needle">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                    </div>
                 </div>
                 <div class="kaaba-pointer" id="kaabaPointer">
                     <div class="kaaba-icon">🕋</div>
@@ -594,19 +576,11 @@
             <div class="settings-group">
                 <label class="settings-label" id="lbl-theme">Pilihan Tema / Theme Selection</label>
                 <select id="theme-select" onchange="tukarTemaSistem()">
-                    <option value="default">Sistem Lalai (Terang / Gelap)</option>
-                    <option value="sage">Sage & Earthy</option>
-                    <option value="japandi">Minimalist Japandi</option>
-                    <option value="midnight">Midnight Luxury</option>
-                    <option value="klasik">Nostalgia Klasik (Retro Melayu)</option>
-                    <option value="songket">Songket Diraja</option>
-                    <option value="peranakan">Peranakan Kebaya</option>
-                    <option value="cyberpunk">Cyberpunk / Neon Futuristic</option>
-                    <option value="anime">Anime / Manga Sakura</option>
-                    <option value="y2k">Y2K Pop</option>
-                    <option value="boho">Boho Chic / Wanderlust</option>
-                    <option value="forest">Enchanted Forest</option>
-                    <option value="ocean">Under the Sea / Ocean Breeze</option>
+                    <option value="default">Hijau Asas (Lalai)</option>
+                    <option value="merah">Merah</option>
+                    <option value="oren">Oren</option>
+                    <option value="biru">Biru</option>
+                    <option value="ungu">Ungu</option>
                 </select>
             </div>
 
@@ -739,7 +713,7 @@
             <span id="tab-lbl-kiblat">Kiblat</span>
         </button>
         <button class="nav-item" id="nav-tetapan" onclick="tukarTabSPA('tetapan')">
-            <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l-.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l-.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
             <span id="tab-lbl-tetapan">Tetapan</span>
         </button>
     </nav>
@@ -764,7 +738,6 @@
     let autoCloseTimeout;
     let progressAnimationInterval;
 
-    // AL-QURAN PERSISTENT STATES
     let senaraiSurahMentah = [];
     let idSurahSemasa = 1;
     let namaArabSurahSemasa = "";
@@ -773,7 +746,6 @@
     let sudutKiblatGlobal = 0;
     let vibratedRecently = false;
 
-    // Pembolehubah Global Audio Qari (Mishary Alafasy)
     let audioSemasa = null;
     let senaraiAudioAyat = []; 
     let indeksAyatSemasa = -1; 
@@ -840,7 +812,6 @@
         { id: "SWK08", lat: 1.5533, lng: 110.3592 }, { id: "SWK09", lat: 1.5500, lng: 110.3600 }
     ];
 
-    // SPA View Router Engine
     function tukarTabSPA(tabName) {
         document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -848,7 +819,6 @@
         document.getElementById(`view-${tabName}`).classList.add('active');
         document.getElementById(`nav-${tabName}`).classList.add('active');
 
-        // Hentikan audio jika pengguna menukar tab menu aplikasi utama
         if (tabName !== 'quran' && audioSemasa) {
             audioSemasa.pause();
             audioSemasa = null;
@@ -1032,7 +1002,6 @@
         }
     }
 
-    // ================= DYNAMIC QIBLA CALCULATOR ENGINE =================
     function hitungSudutKiblatMekah(latitude, longitude) {
         const latKaabah = 21.422487 * Math.PI / 180;
         const lngKaabah = 39.826206 * Math.PI / 180;
@@ -1107,7 +1076,6 @@
         }
     }
 
-    // ================= BUILT-IN SYNTHETIC CHIME OSCILLATOR ENGINE =================
     function mainkanBunyiTitTit() {
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1138,7 +1106,6 @@
         } catch(e) { console.log("Web Audio Context blocked/not supported.", e); }
     }
 
-    // ================= FIXED AL-QURAN DIGITAL FEATURE ENGINE =================
     async function muatTurunSenaraiSurah() {
         const container = document.getElementById('surah-list-container');
         document.getElementById('loading-text').style.display = 'block';
@@ -1200,11 +1167,9 @@
         }
     }
 
-    // NEW: Fungsi Pemutar Audio mengikut Indeks Ayat (Verse-by-Verse Player Core)
     function mainkanAyatMendalam(idx) {
         if (idx < 0 || idx >= senaraiAudioAyat.length) return;
 
-        // Padam gaya aktif penanda ('playing') pada ayat lama sekiranya wujud
         if (indeksAyatSemasa !== -1) {
             const kadLama = document.getElementById(`ayah-card-${indeksAyatSemasa + 1}`);
             if (kadLama) kadLama.classList.remove('playing');
@@ -1219,26 +1184,20 @@
         const urlAudioAyat = senaraiAudioAyat[indeksAyatSemasa].audio;
         audioSemasa = new Audio(urlAudioAyat);
 
-        // Serlahkan kad ayat aktif & gerakkan skrin ke sasaran ayat secara lancar
         const kadSarang = document.getElementById(`ayah-card-${indeksAyatSemasa + 1}`);
         if (kadSarang) {
             kadSarang.classList.add('playing');
             kadSarang.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Kemaskini dropdown seleksi penunjuk ayat selari dengan fail audio aktif
         document.getElementById('quran-ayah-select').value = indeksAyatSemasa + 1;
-
         kemaskiniUIPlayerTaskbar();
-
         audioSemasa.play().catch(e => console.log("Gagal memulakan audio:", e));
 
-        // Pengendali Automatik ke Ayat Seterusnya (Continuous Playback Flow)
         audioSemasa.addEventListener('ended', () => {
             if (indeksAyatSemasa < senaraiAudioAyat.length - 1) {
                 mainkanAyatMendalam(indeksAyatSemasa + 1);
             } else {
-                // Selesai tamat keseluruhan surah
                 if (indeksAyatSemasa !== -1) {
                     const kadAkhir = document.getElementById(`ayah-card-${indeksAyatSemasa + 1}`);
                     if (kadAkhir) kadAkhir.classList.remove('playing');
@@ -1253,12 +1212,10 @@
         audioSemasa.addEventListener('pause', kemaskiniUIPlayerTaskbar);
     }
 
-    // NEW: Fungsi Mengawal Play/Pause Menerusi Taskbar Berpusat
     function togglePlayPauseAudio() {
         if (senaraiAudioAyat.length === 0) return;
 
         if (indeksAyatSemasa === -1) {
-            // Jika belum ada ayat dipilih, mainkan bermula dari ayat pertama
             mainkanAyatMendalam(0);
             return;
         }
@@ -1272,7 +1229,6 @@
         }
     }
 
-    // NEW: Fungsi Navigasi Ayat Seterusnya / Sebelumnya pada Taskbar
     function ayatSeterusnya() {
         if (indeksAyatSemasa < senaraiAudioAyat.length - 1) {
             mainkanAyatMendalam(indeksAyatSemasa + 1);
@@ -1285,7 +1241,6 @@
         }
     }
 
-    // NEW: Kemaskini UI Ikon & Status Teks Taskbar Audio
     function kemaskiniUIPlayerTaskbar() {
         const btnPlay = document.getElementById('btn-global-play');
         const txtStatus = document.getElementById('player-ayah-status');
@@ -1297,10 +1252,8 @@
         }
 
         if (audioSemasa && !audioSemasa.paused) {
-            // Tukar ke ikon Pause
             btnPlay.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
         } else {
-            // Tukar ke ikon Play
             btnPlay.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
         }
     }
@@ -1310,7 +1263,6 @@
         namaArabSurahSemasa = arabName;
         namaEngSurahSemasa = engName;
 
-        // Reset semua operasi audio sedia ada sebelum memuatkan surah baru
         if (audioSemasa) {
             audioSemasa.pause();
             audioSemasa = null;
@@ -1334,7 +1286,6 @@
 
         let edisi = document.getElementById('quran-translation-select').value;
         try {
-            // Mengambil edisi teks uthmani bersama penstriman audio qari Mishary Alafasy (ar.alafasy) ayat-demi-ayat
             let fetchUrl = `https://api.alquran.cloud/v1/surah/${id}/editions/quran-uthmani,ar.alafasy`;
             if (edisi !== 'none') {
                 fetchUrl += `,${edisi}`;
@@ -1350,7 +1301,7 @@
                 let audioList = data.data.find(e => e.edition.identifier === 'ar.alafasy')?.ayahs || [];
                 let transList = edisi !== 'none' ? (data.data.find(e => e.edition.identifier === edisi)?.ayahs || []) : [];
 
-                senaraiAudioAyat = audioList; // Disimpan ke memori untuk rujukan taskbar global
+                senaraiAudioAyat = audioList;
 
                 if (arabList.length > 0) {
                     ayahSelect.style.display = 'inline-block';
@@ -1360,7 +1311,6 @@
                         opt.innerText = `${i18n[bahasaSemasa].ayahDisplay} ${ayah.numberInSurah}`;
                         ayahSelect.appendChild(opt);
                     });
-                    // Paparkan taskbar audio kawalan berpusat
                     document.getElementById('quran-audio-player').style.display = 'flex';
                 }
 
@@ -1370,17 +1320,13 @@
                     card.id = `ayah-card-${ayah.numberInSurah}`;
                     card.style.cursor = 'pointer';
                     
-                    // Membolehkan kad disentuh untuk memainkan ayat tersebut
-                    card.onclick = () => {
-                        mainkanAyatMendalam(idx);
-                    };
+                    card.onclick = () => { mainkanAyatMendalam(idx); };
                     
                     let transTextHTML = '';
                     if (edisi !== 'none' && transList[idx]) {
                         transTextHTML = `<div class="ayah-text"><strong>${ayah.numberInSurah}.</strong> ${transList[idx].text}</div>`;
                     }
 
-                    // Kandungan kad dibina tanpa sebarang butang dengar individu
                     card.innerHTML = `
                         <div class="ayah-arabic">${ayah.text} <span style="font-size:1.4rem; color:var(--theme-color); font-family: sans-serif; font-weight: normal; margin-left: 4px;">﴿${ayah.numberInSurah}﴾</span></div>
                         ${transTextHTML}
@@ -1401,16 +1347,12 @@
         const targetCard = document.getElementById(`ayah-card-${noAyat}`);
         if (targetCard) {
             targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Mengubah pemain audio memainkan ayat yang dipilih daripada senarai menu dropdown
             mainkanAyatMendalam(parseInt(noAyat, 10) - 1);
         }
     }
 
     function kembaliKeSenaraiSurah() {
-        if (audioSemasa) {
-            audioSemasa.pause();
-            audioSemasa = null;
-        }
+        if (audioSemasa) { audioSemasa.pause(); audioSemasa = null; }
         indeksAyatSemasa = -1;
         document.getElementById('quran-audio-player').style.display = 'none';
         document.getElementById('quran-ayah-select').style.display = 'none';
@@ -1418,7 +1360,7 @@
         document.getElementById('quran-browser-panel').style.display = 'flex';
     }
 
-    // ================= TRADITIONAL BACKEND CORE LOGIC =================
+    // ================= TRADITIONAL BACKEND CORE LOGIC & COMPLETIONS =================
     function formatHijriStandard(hijriStr) {
         if (!hijriStr || hijriStr === "-") {
             try {
@@ -1446,9 +1388,7 @@
             hari = parseInt(hari, 10) || hari;
             tahun = parseInt(tahun, 10) || tahun;
             let bulanKey = bulanMentah.toLowerCase();
-if (!isNaN(bulanMentah)) {
-    bulanKey = parseInt(bulanMentah, 10).toString()
-    }
+            if (!isNaN(bulanMentah)) { bulanKey = parseInt(bulanMentah, 10).toString(); }
             let langMaps = mapBulan[bahasaSemasa] || mapBulan["ms"];
             let bulanFormat = langMaps[bulanKey] || bulanMentah;
             return `${hari} ${bulanFormat} ${tahun} H`;
@@ -1488,6 +1428,23 @@ if (!isNaN(bulanMentah)) {
         };
         kemaskiniPaparanWaktu();
         return true;
+    }
+
+    function formatKe24Jam(masaStr) {
+        if (typeof masaStr === 'number') {
+            let d = new Date(masaStr * 1000);
+            return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+        }
+        if (!masaStr) return "00:00";
+        return masaStr.replace(/[^0-9:]/g, ''); 
+    }
+
+    function tambahMinitMasa(masa, minit) {
+        let [j, m] = masa.split(':').map(Number);
+        let date = new Date();
+        date.setHours(j, m, 0);
+        date.setMinutes(date.getMinutes() + minit);
+        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
     }
 
     async function fetchDanFormatMalaysia(zon) {
@@ -1565,124 +1522,25 @@ if (!isNaN(bulanMentah)) {
                 simpanDataOffline(kodZonDipilih, senaraiFormat);
                 prosesDataHariIni(senaraiFormat);
                 kemaskiniKiraSudutKiblat();
+                tukarTabSPA('solat');
             } catch (e) {
-                document.getElementById('loading-text').innerText = i18n[bahasaSemasa].offlineMode;
+                document.getElementById('loading-text').innerText = i18n[bahasaSemasa].errorZoneInvalid;
             } finally {
                 document.getElementById('loading-text').style.display = 'none';
             }
         }
     }
 
-    function muatDataWaktuSolat() {
-        if (!kodZonDipilih) return;
-        if (kodZonDipilih.startsWith("GLOBAL-")) {
-            const dataSediaAda = bacaDataOffline(kodZonDipilih);
-            if (dataSediaAda) { prosesDataHariIni(dataSediaAda); kemaskiniKiraSudutKiblat(); }
-        } else if (kodZonDipilih.startsWith("GPS-")) {
-            const dataSediaAda = bacaDataOffline(kodZonDipilih);
-            if (dataSediaAda) { prosesDataHariIni(dataSediaAda); kemaskiniKiraSudutKiblat(); }
-        } else {
-            if (kodZonDipilih === "SINGAPORE") dapatkanWaktuSolatLuarNegara("Singapore", "Singapore", 0);
-            else if (kodZonDipilih === "BRUNEI-BSB") dapatkanWaktuSolatLuarNegara("Bandar Seri Begawan", "Brunei", 0);
-            else if (kodZonDipilih === "BRUNEI-BEL") dapatkanWaktuSolatLuarNegara("Bandar Seri Begawan", "Brunei", 3);
-            else if (kodZonDipilih === "BRUNEI-TUT") dapatkanWaktuSolatLuarNegara("Bandar Seri Begawan", "Brunei", 1);
-            else dapatkanWaktuSolat(kodZonDipilih);
-        }
-    }
-
-    async function cariKawasanGlobal() {
-        const inputEl = document.getElementById('search-input');
-        const kataKunci = inputEl.value.trim();
-        if (!kataKunci) return;
-
-        const temporaryKodZon = "GLOBAL-" + kataKunci.toUpperCase().replace(/\s+/g, '_');
-        const dataSediaAda = bacaDataOffline(temporaryKodZon);
-        
-        if (dataSediaAda) {
-            kodZonDipilih = temporaryKodZon; namaZonDipilih = kataKunci.toUpperCase();
-            localStorage.setItem('hayya-zone', kodZonDipilih); localStorage.setItem('hayya-zone-name', namaZonDipilih);
-            notisPernahKeluarUntuk = ""; notisDitutupUntuk = "";
-            prosesDataHariIni(dataSediaAda);
-            kemaskiniKiraSudutKiblat();
-            tukarTabSPA('solat');
-            return;
-        }
-
-        document.getElementById('loading-text').style.display = 'block';
-        try {
-            const kini = new Date();
-            let method = 3; let low = kataKunci.toLowerCase();
-            if(low.includes("mekah") || low.includes("mecca") || low.includes("saudi")) method = 4;
-            else if (low.includes("indonesia") || low.includes("jakarta")) method = 1;
-
-            const res = await fetch(`https://api.aladhan.com/v1/calendarByAddress/${kini.getFullYear()}/${kini.getMonth() + 1}?address=${encodeURIComponent(kataKunci)}&method=${method}`);
-            const resData = await res.json();
-
-            if (resData.code === 200 && resData.data && resData.data.length > 0) {
-                kodZonDipilih = temporaryKodZon; namaZonDipilih = kataKunci.toUpperCase();
-                localStorage.setItem('hayya-zone', kodZonDipilih); localStorage.setItem('hayya-zone-name', namaZonDipilih);
-                notisPernahKeluarUntuk = ""; notisDitutupUntuk = "";
-
-                const meta = resData.data[0].meta;
-                if (meta && meta.latitude && meta.longitude) {
-                    localStorage.setItem('hayya-manual-lat', meta.latitude);
-                    localStorage.setItem('hayya-manual-lng', meta.longitude);
-                }
-
-                let senaraiFormat = susunDataAladhan(resData.data);
-                simpanDataOffline(kodZonDipilih, senaraiFormat);
-                prosesDataHariIni(senaraiFormat);
-                kemaskiniKiraSudutKiblat();
-                tukarTabSPA('solat');
-            } else { throw new Error("InvalidZone"); }
-        } catch(e) {
-            alert(i18n[bahasaSemasa].errorZoneInvalid);
-        } finally {
-            document.getElementById('loading-text').style.display = 'none';
-        }
-    }
-
-    async function autoDownloadSemuaZon() {
-        const statusEl = document.getElementById('download-all-status');
-        let adaZonKurang = dataKoordinatZon.some(zon => !bacaDataOffline(zon.id));
-        if (!adaZonKurang) return; 
-
-        statusEl.style.display = 'block';
-        statusEl.innerText = i18n[bahasaSemasa].dlStart;
-
-        for (let i = 0; i < dataKoordinatZon.length; i++) {
-            const zon = dataKoordinatZon[i];
-            if (bacaDataOffline(zon.id)) continue;
-            try {
-                let formattedData = null;
-                if (zon.id === "SINGAPORE") formattedData = await fetchDanFormatLiarNegara("Singapore", "Singapore", 0);
-                else if (zon.id === "BRUNEI-BSB") formattedData = await fetchDanFormatLiarNegara("Bandar Seri Begawan", "Brunei", 0);
-                else if (zon.id === "BRUNEI-BEL") formattedData = await fetchDanFormatLiarNegara("Bandar Seri Begawan", "Brunei", 3);
-                else if (zon.id === "BRUNEI-TUT") formattedData = await fetchDanFormatLiarNegara("Bandar Seri Begawan", "Brunei", 1);
-                else formattedData = await fetchDanFormatMalaysia(zon.id);
-
-                if (formattedData) {
-                    simpanDataOffline(zon.id, formattedData);
-                    if (zon.id === kodZonDipilih) prosesDataHariIni(formattedData);
-                }
-                statusEl.innerText = `${i18n[bahasaSemasa].dlStart} (${i+1}/${dataKoordinatZon.length})`;
-                await new Promise(resolve => setTimeout(resolve, 60)); 
-            } catch (err) { }
-        }
-        statusEl.innerText = i18n[bahasaSemasa].dlDone;
-        setTimeout(() => { statusEl.style.display = 'none'; }, 4000);
-    }
-
-    async function dapatkanWaktuSolat(zon) {
-        if (!zon) return;
-        const dataSediaAda = bacaDataOffline(zon);
-        if (dataSediaAda) { prosesDataHariIni(dataSediaAda); kemaskiniKiraSudutKiblat(); } 
+    async function muatDataWaktuSolat() {
+        if (!kodZonDipilih || kodZonDipilih.startsWith("GPS") || kodZonDipilih.startsWith("GLOBAL")) return;
+        const dataSediaAda = bacaDataOffline(kodZonDipilih);
+        if (dataSediaAda) { prosesDataHariIni(dataSediaAda); kemaskiniKiraSudutKiblat(); }
         else {
             document.getElementById('loading-text').style.display = 'block';
             try {
-                const senaraiFormat = await fetchDanFormatMalaysia(zon);
-                simpanDataOffline(zon, senaraiFormat);
-                prosesDataHariIni(senaraiFormat);
+                const data = await fetchDanFormatMalaysia(kodZonDipilih);
+                simpanDataOffline(kodZonDipilih, data);
+                prosesDataHariIni(data);
                 kemaskiniKiraSudutKiblat();
             } catch (e) {
                 document.getElementById('loading-text').innerText = i18n[bahasaSemasa].offlineMode;
@@ -1692,171 +1550,164 @@ if (!isNaN(bulanMentah)) {
         }
     }
 
-    function tambahMinitMasa(masaStr, minitTambah) {
-        let [jam, minit] = masaStr.split(':').map(Number);
-        let totalMinit = jam * 60 + minit + minitTambah;
-        if (totalMinit < 0) totalMinit += 24 * 60;
-        return `${Math.floor(totalMinit / 60) % 24}:${(totalMinit % 60).toString().padStart(2, '0')}`;
-    }
-
-    function kemaskiniPaparanWaktu() {
-        const elNamaZon = document.getElementById('nama-zon-terpilih');
-        if (kodZonDipilih && kodZonDipilih.startsWith("GLOBAL-")) { elNamaZon.style.display = 'none'; } 
-        else { elNamaZon.style.display = 'block'; elNamaZon.innerText = `${i18n[bahasaSemasa].zoneLabel}: ${kodZonDipilih}`; }
-
-        urutanSolat.forEach(s => { document.getElementById(`m-${s}`).innerText = format12Jam(jadualSolat[s]); });
-        prosesMasaSemasa();
-        clearInterval(timerInterval);
-        timerInterval = setInterval(prosesMasaSemasa, 1000);
-    }
-
-    function formatKe24Jam(timestamp) {
-        if (typeof timestamp === 'string') {
-            if (timestamp.includes(':')) return timestamp.trim().substring(0, 5);
-            timestamp = parseInt(timestamp, 10);
-        }
-        if (!timestamp || isNaN(timestamp)) return "00:00";
-        let t = new Date(timestamp * 1000);
-        return `${t.getHours().toString().padStart(2, '0')}:${t.getMinutes().toString().padStart(2, '0')}`;
-    }
-
-    function format12Jam(masa24) {
-        if(!masa24) return "-";
-        let [jam, minit] = masa24.split(':').map(Number);
-        return `${jam % 12 || 12}:${minit.toString().padStart(2, '0')} ${jam >= 12 ? 'PM' : 'AM'}`;
-    }
-
-    function prosesMasaSemasa() {
-        if (!jadualSolat.subuh) return;
-        const agora = new Date();
-        const dapatkanMinit = (mStr) => { 
-            if(!mStr) return 0; 
-            let [j, m] = mStr.split(':').map(Number);
-            return j * 60 + m;
-        };
-
-        const jamKini = agora.getHours();
-        const minitKini = agora.getMinutes();
-        const minitSkarang = jamKini * 60 + minitKini;
-        const saatKini = agora.getSeconds();
-
-        let skarangId = "isyak";
-        let seterusId = "imsak";
-
-        for (let i = 0; i < urutanSolat.length; i++) {
-            let mSolat = dapatkanMinit(jadualSolat[urutanSolat[i]]);
-            if (minitSkarang >= mSolat) {
-                skarangId = urutanSolat[i];
-                seterusId = urutanSolat[(i + 1) % urutanSolat.length];
-            }
-        }
-
-        solatSemasaId = skarangId;
-        document.getElementById('current-name').innerText = i18n[bahasaSemasa][skarangId];
-        document.getElementById('current-eng-sub').innerText = bahasaSemasa === 'ms' ? subNamaWaktuBM[skarangId] : subNamaWaktuBI[skarangId];
-        document.getElementById('current-arabic').innerText = namaSolatArab[skarangId];
-        document.getElementById('current-start-time').innerText = `${i18n[bahasaSemasa].startsAt} ${format12Jam(jadualSolat[skarangId])}`;
-
-        document.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
-        const activeItem = document.getElementById(`item-${skarangId}`);
-        if (activeItem) activeItem.classList.add('active');
-
-        let minitSeterus = dapatkanMinit(jadualSolat[seterusId]);
-        let bezaMinit = minitSeterus - minitSkarang;
-        if (bezaMinit <= 0) {
-            bezaMinit += 24 * 60;
-        }
-
-        let totalSaatBaki = bezaMinit * 60 - saatKini;
-        if (totalSaatBaki < 0) totalSaatBaki = 0;
-
-        let bakiJam = Math.floor(totalSaatBaki / 3600);
-        let bakiMinit = Math.floor((totalSaatBaki % 3600) / 60);
-        let bakiSaat = totalSaatBaki % 60;
-
-        document.getElementById('upcoming-name').innerText = i18n[bahasaSemasa][seterusId];
-        document.getElementById('upcoming-arabic').innerText = namaSolatArab[seterusId];
-        document.getElementById('upcoming-start-time').innerText = `${i18n[bahasaSemasa].startsAt} ${format12Jam(jadualSolat[seterusId])}`;
-        document.getElementById('countdown-timer').innerText = `${i18n[bahasaSemasa].timeLeft}: ${bakiJam.toString().padStart(2, '0')}:${bakiMinit.toString().padStart(2, '0')}:${bakiSaat.toString().padStart(2, '0')}`;
-
-        let mMula = dapatkanMinit(jadualSolat[skarangId]);
-        let totalMinitDurasi = minitSeterus - mMula;
-        if (totalMinitDurasi <= 0) totalMinitDurasi += 24 * 60;
-        let mBerlalu = minitSkarang - mMula;
-        if (mBerlalu < 0) mBerlalu += 24 * 60;
-        let peratus = (mBerlalu / totalMinitDurasi) * 100;
-        document.getElementById('progress-fill').style.width = `${peratus}%`;
-
-        if (minitSkarang === dapatkanMinit(jadualSolat[skarangId]) && saatKini === 0) {
-            if (notisPernahKeluarUntuk !== skarangId && notisDitutupUntuk !== skarangId) {
-                bukaNotif(skarangId);
-            }
-        }
-    }
-
-    function bukaNotif(solatId) {
-        notisPernahKeluarUntuk = solatId;
-        document.getElementById('notif-nama-solat').innerText = i18n[bahasaSemasa][solatId];
-        document.getElementById('notif-nama-zon').innerText = namaZonDipilih || "-";
-        document.getElementById('full-screen-notif').classList.add('active');
-        
-        titTitInterval = setInterval(mainkanBunyiTitTit, 2000);
-        mainkanBunyiTitTit();
-    }
-
-    function tutupNotif() {
-        notisDitutupUntuk = solatSemasaId;
-        document.getElementById('full-screen-notif').classList.remove('active');
-        clearInterval(titTitInterval);
-    }
-
     function tukarZon() {
-        const selectBox = document.getElementById('zon-select');
-        kodZonDipilih = selectBox.value;
+        const sel = document.getElementById('zon-select');
+        kodZonDipilih = sel.value;
         localStorage.setItem('hayya-zone', kodZonDipilih);
-        const tksPilihan = selectBox.options[selectBox.selectedIndex].text;
+        localStorage.removeItem('hayya-manual-lat'); 
+        localStorage.removeItem('hayya-manual-lng');
+        const tksPilihan = sel.options[sel.selectedIndex].text;
         namaZonDipilih = tksPilihan.includes(" - ") ? tksPilihan.split(" - ")[1] : tksPilihan;
+        localStorage.setItem('hayya-zone-name', namaZonDipilih);
+        muatDataWaktuSolat();
+    }
+
+    function cariKawasanGlobal() {
+        const input = document.getElementById('search-input').value;
+        if(!input) return;
+        const parts = input.split(',');
+        const bandar = parts[0].trim();
+        const negara = parts.length > 1 ? parts[1].trim() : '';
+        kodZonDipilih = `GLOBAL-${bandar}`;
+        namaZonDipilih = input;
+        localStorage.setItem('hayya-zone', kodZonDipilih);
         localStorage.setItem('hayya-zone-name', namaZonDipilih);
         localStorage.removeItem('hayya-manual-lat');
         localStorage.removeItem('hayya-manual-lng');
-        notisPernahKeluarUntuk = ""; notisDitutupUntuk = "";
-        muatDataWaktuSolat();
-        tukarTabSPA('solat');
+        dapatkanWaktuSolatLuarNegara(bandar, negara, 0);
     }
 
-    // Initialize App on DOM Load
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('hayya-lang') || 'ms';
-        document.getElementById('lang-select').value = savedLang;
-        
-        const savedTheme = localStorage.getItem('hayya-theme-mode') || 'default';
-        document.getElementById('theme-select').value = savedTheme;
-        if (savedTheme !== 'default') document.body.setAttribute('data-theme', savedTheme);
+    function tutupNotif() {
+        document.getElementById('full-screen-notif').classList.remove('active');
+    }
 
-        const savedZone = localStorage.getItem('hayya-zone');
-        const savedZoneName = localStorage.getItem('hayya-zone-name');
-        if (savedZone && savedZoneName) {
-            kodZonDipilih = savedZone;
-            namaZonDipilih = savedZoneName;
-            document.getElementById('zon-select').value = savedZone;
-            muatDataWaktuSolat();
+    function kemaskiniPaparanWaktu() {
+        if (!jadualSolat.subuh) return;
+        urutanSolat.forEach(s => {
+            document.getElementById(`m-${s}`).innerText = jadualSolat[s];
+            document.getElementById(`item-${s}`).classList.remove('active');
+        });
+
+        const now = new Date();
+        const currTimeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+        
+        let solatKini = "", solatSeterusnya = "";
+        for (let i = 0; i < urutanSolat.length; i++) {
+            if (currTimeStr >= jadualSolat[urutanSolat[i]]) {
+                solatKini = urutanSolat[i];
+                solatSeterusnya = urutanSolat[(i + 1) % urutanSolat.length];
+            }
+        }
+        if (!solatKini) {
+            solatKini = "isyak";
+            solatSeterusnya = "imsak";
         }
 
-        tukarBahasa();
-        autoDownloadSemuaZon();
-    });
-</script>
+        document.getElementById(`item-${solatKini}`).classList.add('active');
+        document.getElementById('current-name').innerText = i18n[bahasaSemasa][solatKini];
+        document.getElementById('current-eng-sub').innerText = bahasaSemasa === "ms" ? subNamaWaktuBM[solatKini] : subNamaWaktuBI[solatKini];
+        document.getElementById('current-arabic').innerText = namaSolatArab[solatKini];
+        document.getElementById('current-start-time').innerText = `${i18n[bahasaSemasa].startsAt} ${jadualSolat[solatKini]}`;
 
-<script>
-    // Mendaftarkan Service Worker untuk fungsi PWA
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('Service Worker Berjaya Didaftarkan!', reg))
-                .catch(err => console.log('Gagal mendaftarkan Service Worker:', err));
-        });
+        document.getElementById('upcoming-name').innerText = i18n[bahasaSemasa][solatSeterusnya];
+        document.getElementById('upcoming-arabic').innerText = namaSolatArab[solatSeterusnya];
+        document.getElementById('upcoming-start-time').innerText = `${i18n[bahasaSemasa].startsAt} ${jadualSolat[solatSeterusnya]}`;
+
+        kiraCountdown(jadualSolat[solatSeterusnya], solatKini, solatSeterusnya);
     }
-</script>
 
+    function kiraCountdown(targetTime, solatKini, solatSeterusnya) {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            const now = new Date();
+            let [tH, tM] = targetTime.split(':').map(Number);
+            let target = new Date();
+            target.setHours(tH, tM, 0, 0);
+
+            if (solatSeterusnya === "imsak" && solatKini === "isyak" && now.getHours() >= 12) {
+                target.setDate(target.getDate() + 1);
+            }
+
+            let diff = target - now;
+            if (diff <= 0) {
+                clearInterval(timerInterval);
+                paparNotifikasiSolat(solatSeterusnya);
+                if(solatSeterusnya === "subuh" || solatSeterusnya === "imsak") {
+                    const dataSediaAda = bacaDataOffline(kodZonDipilih);
+                    if(dataSediaAda) prosesDataHariIni(dataSediaAda);
+                }
+                kemaskiniPaparanWaktu();
+                return;
+            }
+
+            let h = Math.floor(diff / 3600000);
+            let m = Math.floor((diff % 3600000) / 60000);
+            let s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('countdown-timer').innerText = `${i18n[bahasaSemasa].timeLeft}: ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            
+            let currH = now.getHours(), currM = now.getMinutes();
+            let startMins = jadualSolat[solatKini];
+            let [sH, sM] = startMins.split(':').map(Number);
+            let startT = new Date();
+            startT.setHours(sH, sM, 0, 0);
+            if (solatKini === "isyak" && now.getHours() < 12) {
+                startT.setDate(startT.getDate() - 1);
+            }
+            
+            let totalDiff = target - startT;
+            let elapsed = now - startT;
+            let percent = (elapsed / totalDiff) * 100;
+            document.getElementById('progress-fill').style.width = `${Math.min(100, Math.max(0, percent))}%`;
+            
+        }, 1000);
+    }
+
+    function paparNotifikasiSolat(waktu) {
+        if (notisPernahKeluarUntuk === waktu) return;
+        notisPernahKeluarUntuk = waktu;
+        
+        document.getElementById('notif-nama-solat').innerText = i18n[bahasaSemasa][waktu];
+        document.getElementById('notif-nama-zon').innerText = namaZonDipilih;
+        document.getElementById('full-screen-notif').classList.add('active');
+        
+        mainkanBunyiTitTit();
+        if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
+        
+        autoCloseTimeout = setTimeout(tutupNotif, 30000);
+    }
+
+    window.onload = () => {
+        const savedTheme = localStorage.getItem('hayya-theme-mode') || 'default';
+        document.getElementById('theme-select').value = savedTheme;
+        tukarTemaSistem();
+
+        bahasaSemasa = localStorage.getItem('hayya-lang') || 'ms';
+        document.getElementById('lang-select').value = bahasaSemasa;
+        tukarBahasa();
+
+        kodZonDipilih = localStorage.getItem('hayya-zone');
+        namaZonDipilih = localStorage.getItem('hayya-zone-name');
+        
+        if (kodZonDipilih) {
+            if (kodZonDipilih.startsWith('GLOBAL')) {
+                setJenisZon('antarabangsa');
+                document.getElementById('search-input').value = namaZonDipilih;
+                cariKawasanGlobal();
+            } else if (kodZonDipilih.startsWith('GPS')) {
+                const lLat = parseFloat(localStorage.getItem('hayya-manual-lat'));
+                const lLng = parseFloat(localStorage.getItem('hayya-manual-lng'));
+                cariKawasanMengejutLewatGPS(lLat, lLng);
+            } else {
+                document.getElementById('zon-select').value = kodZonDipilih;
+                muatDataWaktuSolat();
+            }
+        } else {
+            document.getElementById('tarikh-miladi').innerText = i18n[bahasaSemasa].noZone;
+        }
+        
+        setInterval(kemaskiniTarikhPaparan, 60000); 
+    };
+
+</script>
 </body>
 </html>
